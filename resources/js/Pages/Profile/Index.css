@@ -1,0 +1,131 @@
+.profileMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #f1faf4;
+}
+
+.profileCard {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.profilePhoto {
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+    object-fit: cover;
+    border: 3px solid rgba(78, 105, 94, 1);
+}
+
+.profileInfo h2 {
+    margin: 10px 0 5px;
+    color: rgba(78, 105, 94, 1);
+}
+
+.profileInfo p {
+    color: #555;
+}
+
+.profileActions {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.editBtn,
+.logoutBtn,
+.saveBtn,
+.cancelBtn {
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    cursor: pointer;
+    border: none;
+}
+
+.editBtn {
+    background-color: rgba(196, 221, 204, 1);
+    color: black;
+}
+
+.logoutBtn {
+    background-color: rgba(78, 105, 94, 1);
+    color: white;
+}
+
+.editForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 15px;
+}
+
+.editForm input {
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.formActions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.saveBtn {
+    background-color: rgba(78, 105, 94, 1);
+    color: white;
+}
+
+.cancelBtn {
+    background-color: #ddd;
+}
+
+.avatarUploadForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+.avatarUploadForm input[type="file"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 100%;
+}
+
+.avatarUploadForm .saveBtn {
+    background-color: rgba(78, 105, 94, 1);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+.avatarUploadForm .saveBtn:hover {
+    background-color: rgba(60, 85, 76, 1);
+}
+
+.avatarUploadForm .error {
+    color: red;
+    font-size: 14px;
+    text-align: center;
+}
+
