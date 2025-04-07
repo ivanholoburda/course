@@ -17,20 +17,36 @@ Route::controller(AuthController::class)->group(function () {
         ->middleware('auth');
 });
 
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/home', 'index')->name('home');
-})
-    ->middleware(['auth']);
 
-Route::controller(ProfileController::class)->group(function () {
-    Route::get('/profile', 'index')->name('profile');
-    Route::put('/profile', 'update')->name('profile');
-    Route::post('/profile/upload-avatar', 'uploadAvatar')->name('profile.upload-avatar');
+Route::middleware('auth')->group(function () {
+    Route::controller(HomeController::class)->group(function () {
+        Route::get('/home', 'index')
+            ->name('home');
+    });
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile', 'index')
+            ->name('profile');
+        Route::put('/profile', 'update')
+            ->name('profile');
+        Route::post('/profile/upload-avatar', 'uploadAvatar')
+            ->name('profile.upload-avatar');
+    });
+
+    Route::controller(ProductController::class)->group(function () {
+        Route::post('/products', 'store')
+            ->name('products');
+        Route::post('/products/update/{product}', 'update')
+            ->name('products.update');
+        Route::delete('/products/{product}', 'destroy')
+            ->name('products.destroy');
+        Route::get('/my-care', 'index')
+            ->name('products.index');
+        Route::post('/products/from-bar-code/{barCode}', 'createFromBarCode')
+            ->name('products.from-bar-code');
+    });
 });
 
-Route::controller(ProductController::class)->group(function () {
-    Route::post('/products', 'store')->name('products');
-});
 
 Route::get('/', function () {
     return Inertia::render('Homepage/Homepage', []);

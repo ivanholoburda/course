@@ -35,4 +35,7 @@ return [
         ],
     ],
 
+    'open_beauty' => [
+        'base_url' => 'https://world.openbeautyfacts.org/api/v0/product',
+    ]
 ];

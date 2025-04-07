@@ -21,7 +21,7 @@ class HomeController extends Controller
     {
         /** @var User $user */
         $user = auth()->user();
-        $products = $this->productService->getUserProducts($user);
+        $products = $this->productService->getUserLastProducts($user);
 
         return Inertia::render('Home/Index', [
             'products' => ProductResource::collection($products),

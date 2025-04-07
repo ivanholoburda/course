@@ -6,6 +6,7 @@ use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 /** @mixin Product */
 class ProductResource extends JsonResource
@@ -23,7 +24,9 @@ class ProductResource extends JsonResource
             'country' => $this->country,
             'due_date' => $this->due_date,
             'open_days' => $this->open_days,
-            'image' => Storage::url($this->image),
+            'image' => Str::startsWith($this->image, ['http://', 'https://', '/'])
+                ? $this->image
+                : Storage::url($this->image),
         ];
     }
 }

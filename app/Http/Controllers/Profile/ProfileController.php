@@ -11,6 +11,7 @@ use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
 use Inertia\Inertia;
 use Inertia\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class ProfileController extends Controller
 {
@@ -26,7 +27,7 @@ class ProfileController extends Controller
 
         return Inertia::render('Profile/Index', [
             'user' => new UserResource($user),
-        ]);
+        ], );
     }
 
     /**
@@ -42,7 +43,7 @@ class ProfileController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to update profile. Check data and try again.',
-            ]);
+            ], ResponseAlias::HTTP_BAD_REQUEST);
         }
 
         return response()->json([
@@ -63,7 +64,7 @@ class ProfileController extends Controller
             return response()->json([
                 'success' => false,
                 'message' => 'Failed to upload avatar. Check data and try again.',
-            ]);
+            ], ResponseAlias::HTTP_BAD_REQUEST);
         }
 
         return response()->json([

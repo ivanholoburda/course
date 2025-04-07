@@ -13,6 +13,22 @@ export default function Index({user, products}) {
         image: null,
     });
     const [userProducts, setProducts] = useState(products.data);
+    const [showBarcodeModal, setShowBarcodeModal] = useState(false);
+    const [barcode, setBarcode] = useState("");
+
+    const handleBarcodeSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(`/products/from-bar-code/${barcode}`);
+            setProducts([...userProducts, response.data.product]);
+            alert("Товар додано за штрих-кодом!");
+            setShowBarcodeModal(false);
+            setBarcode("");
+        } catch (error) {
+            console.error("Error fetching product by barcode:", error);
+            alert("Не вдалося знайти товар за штрих-кодом.");
+        }
+    };
 
     const handleChange = (e) => {
         const {name, value, files} = e.target;
@@ -61,7 +77,7 @@ export default function Index({user, products}) {
                             <a className="tovary" href="#tovary">Ваші товари</a>
                             <a className="aboutUs" href="#aboutUs">Про нас</a>
                             <a className="QA">Q&A</a>
-                            <a className="QA">Мій догляд</a>
+                            <a className="QA" href={'/my-care'}>Мій догляд</a>
                             <a href="/profile" className="QA">Акаунт</a>
                         </div>
                     </div>
@@ -78,13 +94,13 @@ export default function Index({user, products}) {
                         </div>
                     </div>
                     <div className="mainButtons">
-                        <button className="firstBut">Сканувати</button>
+                        <button className="firstBut" onClick={() => setShowBarcodeModal(true)}>Сканувати</button>
                         <button className="firstBut" onClick={() => setShowModal(true)}>Ввести вручну</button>
                     </div>
                 </div>
 
                 <div className="mainYourTovar">
-                    <div className="phraceTovary" id="tovary">Ваші товари</div>
+                <div className="phraceTovary" id="tovary">Ваші товари</div>
                     <div className="tovaryCards">
                         {userProducts.map(el => <div className="card">
                             <img src={el.image} alt="photo" className="productCard"/>
@@ -168,6 +184,31 @@ export default function Index({user, products}) {
                                 <button type="submit" className="saveBtn">Створити</button>
                                 <button type="button" className="cancelBtn"
                                         onClick={() => setShowModal(false)}>Скасувати
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </>
+            )}
+
+            {showBarcodeModal && (
+                <>
+                    <div className="modal-overlay" onClick={() => setShowBarcodeModal(false)}></div>
+                    <div className="modalCreate">
+                        <form className="createProductForm" onSubmit={handleBarcodeSubmit}>
+                            <h3>Додати товар за штрих-кодом</h3>
+                            <input
+                                type="text"
+                                name="barcode"
+                                placeholder="Введіть штрих-код"
+                                value={barcode}
+                                onChange={(e) => setBarcode(e.target.value)}
+                                required
+                            />
+                            <div className="formActions">
+                                <button type="submit" className="saveBtn">Знайти</button>
+                                <button type="button" className="cancelBtn"
+                                        onClick={() => setShowBarcodeModal(false)}>Скасувати
                                 </button>
                             </div>
                         </form>
