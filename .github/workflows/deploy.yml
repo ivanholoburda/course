@@ -1,0 +1,38 @@
+name: Deploy to Azure VM
+
+on:
+  push:
+    branches:
+      - main
+      - staging
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: Deploy to Azure via SSH
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Define deploy host based on branch
+        id: set-host
+        run: |
+          if [[ "${GITHUB_REF##*/}" == "main" ]]; then
+            echo "host=${{ secrets.AZURE_PROD_HOST }}" >> $GITHUB_OUTPUT
+          else
+            echo "host=${{ secrets.AZURE_DEV_HOST }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: SSH deploy with username & password
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ steps.set-host.outputs.host }}
+          username: ${{ secrets.AZURE_USERNAME }}
+          password: ${{ secrets.AZURE_PASSWORD }}
+          port: 22
+          script: |
+            cd course
+            sudo git pull origin ${GITHUB_REF##*/}
+            sudo docker exec course_laravel.test_1 php artisan migrate --force
+            sudo docker exec course_laravel.test_1 npm run build
