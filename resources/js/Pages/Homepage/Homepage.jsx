@@ -27,7 +27,7 @@ export default function Homepage() {
                 <div className="menu">
                     <div className="menuHide">
                         <i className="fa-solid fa-leaf leaf"></i>
-                        <div className="skinCare" id="main">SkinCare1</div>
+                        <div className="skinCare" id="main">SkinCare</div>
 
                         <div className="menuButtons">
                             <button onClick={() => window.location.href = '/register'} className="registration">Реєстрація</button>
