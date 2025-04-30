@@ -37,6 +37,7 @@ html {
     justify-content: space-between;
     align-items: center;
     margin: 37px 70px;
+    width: 100%;
 }
 
 .leaf {
@@ -83,6 +84,7 @@ html {
 }
 
 .menuButtons {
+    display: flex;
     gap: 40px;
 }
 
