@@ -1,9 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import background from "@/assets/photo/backGHome.png";
 import "./Index.css";
 
-export default function Index({user, products}) {
+export default function Index({ user, products }) {
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
@@ -19,7 +19,9 @@ export default function Index({user, products}) {
     const handleBarcodeSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`/products/from-bar-code/${barcode}`);
+            const response = await axios.post(
+                `/products/from-bar-code/${barcode}`
+            );
             setProducts([...userProducts, response.data.product]);
             alert("Товар додано за штрих-кодом!");
             setShowBarcodeModal(false);
@@ -31,11 +33,11 @@ export default function Index({user, products}) {
     };
 
     const handleChange = (e) => {
-        const {name, value, files} = e.target;
+        const { name, value, files } = e.target;
         if (name === "image") {
-            setFormData({...formData, image: files[0]});
+            setFormData({ ...formData, image: files[0] });
         } else {
-            setFormData({...formData, [name]: value});
+            setFormData({ ...formData, [name]: value });
         }
     };
 
@@ -71,49 +73,92 @@ export default function Index({user, products}) {
                 <div className="menu">
                     <div className="menuHide">
                         <i className="fa-solid fa-leaf leaf"></i>
-                        <div className="skinCare" id="main">SkinCare</div>
+                        <div className="skinCare" id="main">
+                            SkinCare
+                        </div>
                         <div className="menuChoiser">
                             <div className="holovna">Головна</div>
-                            <a className="tovary" href="#tovary">Ваші товари</a>
-                            <a className="aboutUs" href="#aboutUs">Про нас</a>
+                            <a className="tovary" href="#tovary">
+                                Ваші товари
+                            </a>
+                            <a className="aboutUs" href="#aboutUs">
+                                Про нас
+                            </a>
                             <a className="QA">Q&A</a>
-                            <a className="QA" href={'/my-care'}>Мій догляд</a>
-                            <a href="/profile" className="QA">Акаунт</a>
+                            <a className="myChois" href={"/my-care"}>
+                                Мій догляд
+                            </a>
+                            <a href="/profile" className="account">
+                                Акаунт
+                            </a>
                         </div>
                     </div>
                 </div>
             </header>
 
             <main className="main">
-                <div className="headScreen" style={{backgroundImage: `url(${background})`}}>
+                <div
+                    className="headScreen"
+                    style={{ backgroundImage: `url(${background})` }}
+                >
                     <div className="mainPhrace">
                         <div className="firstPh">Скануй та слідкуй!</div>
                         <div className="inscription">
-                            Допоможемо вам залишатися гарними та здоровими, дбаючи про терміни
-                            придатності вашої косметики...
+                            Допоможемо вам залишатися гарними та здоровими,
+                            дбаючи про терміни придатності вашої косметики. За
+                            допомогою SkinCare ви зможете легко відстежувати
+                            дати придатності кожного засобу, отримувати
+                            сповіщення про наближення строку та завжди мати під
+                            контролем свої косметичні засоби.
                         </div>
                     </div>
                     <div className="mainButtons">
-                        <button className="firstBut" onClick={() => setShowBarcodeModal(true)}>Сканувати</button>
-                        <button className="firstBut" onClick={() => setShowModal(true)}>Ввести вручну</button>
+                        <button
+                            className="firstBut"
+                            onClick={() => setShowBarcodeModal(true)}
+                        >
+                            Сканувати
+                        </button>
+                        <button
+                            className="firstBut"
+                            onClick={() => setShowModal(true)}
+                        >
+                            Ввести вручну
+                        </button>
                     </div>
                 </div>
 
                 <div className="mainYourTovar">
-                <div className="phraceTovary" id="tovary">Ваші товари</div>
+                    <div className="phraceTovary" id="tovary">
+                        Ваші товари
+                    </div>
                     <div className="tovaryCards">
-                        {userProducts.map(el => <div className="card">
-                            <img src={el.image} alt="photo" className="productCard"/>
-                            <div className="cardDescr">
-                                <div className="nameTovar">{el.name}</div>
-                                <div className="countryMade">{el.country}</div>
-                                <div className="timeEnd">Придатний до: {el.due_date}</div>
+                        {userProducts.map((el) => (
+                            <div className="card">
+                                <img
+                                    src={el.image}
+                                    alt="photo"
+                                    className="productCard"
+                                />
+                                <div className="cardDescr">
+                                    <div className="nameTovar">{el.name}</div>
+                                    <div className="countryMade">
+                                        {el.country}
+                                    </div>
+                                    <div className="timeEnd">
+                                        Придатний до: {el.due_date}
+                                    </div>
+                                </div>
+                                <div className="cardDays">
+                                    <div className="howToTimeEndNum">
+                                        {el.open_days}
+                                    </div>
+                                    <div className="endDays">
+                                        днів залишилось
+                                    </div>
+                                </div>
                             </div>
-                            <div className="cardDays">
-                                <div className="howToTimeEndNum">{el.open_days}</div>
-                                <div className="endDays">днів залишилось</div>
-                            </div>
-                        </div>)}
+                        ))}
                     </div>
                 </div>
 
@@ -121,15 +166,18 @@ export default function Index({user, products}) {
                     <div className="phraceAbout">Про нас</div>
                     <div className="includeAbout">
                         <p>
-                            SkinCare — більше, ніж додаток. Це ваш помічник у догляді за красою,
-                            який дозволяє стежити за термінами придатності косметики легко і зручно.
+                            SkinCare — більше, ніж додаток. Це ваш помічник у
+                            догляді за красою, який дозволяє стежити за
+                            термінами придатності косметики легко і зручно.
                         </p>
                         <p>
-                            Ми — команда SkinCare — створили сервіс, щоб кожен користувач міг
-                            вчасно використовувати свої засоби та бути впевненим у їхній безпеці.
+                            Ми — команда SkinCare — створили сервіс, щоб кожен
+                            користувач міг вчасно використовувати свої засоби та
+                            бути впевненим у їхній безпеці.
                         </p>
                         <p>
-                            Приєднуйтесь до нашої спільноти і керуйте красою з розумом.
+                            Приєднуйтесь до нашої спільноти і керуйте красою з
+                            розумом.
                         </p>
                     </div>
                 </div>
@@ -137,9 +185,15 @@ export default function Index({user, products}) {
 
             {showModal && (
                 <>
-                    <div className="modal-overlay" onClick={() => setShowModal(false)}></div>
+                    <div
+                        className="modal-overlay"
+                        onClick={() => setShowModal(false)}
+                    ></div>
                     <div className="modalCreate">
-                        <form className="createProductForm" onSubmit={handleSubmit}>
+                        <form
+                            className="createProductForm"
+                            onSubmit={handleSubmit}
+                        >
                             <h3>Новий товар</h3>
                             <input
                                 type="text"
@@ -181,9 +235,15 @@ export default function Index({user, products}) {
                                 required
                             />
                             <div className="formActions">
-                                <button type="submit" className="saveBtn">Створити</button>
-                                <button type="button" className="cancelBtn"
-                                        onClick={() => setShowModal(false)}>Скасувати
+                                <button type="submit" className="saveBtn">
+                                    Створити
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cancelBtn"
+                                    onClick={() => setShowModal(false)}
+                                >
+                                    Скасувати
                                 </button>
                             </div>
                         </form>
@@ -193,9 +253,15 @@ export default function Index({user, products}) {
 
             {showBarcodeModal && (
                 <>
-                    <div className="modal-overlay" onClick={() => setShowBarcodeModal(false)}></div>
+                    <div
+                        className="modal-overlay"
+                        onClick={() => setShowBarcodeModal(false)}
+                    ></div>
                     <div className="modalCreate">
-                        <form className="createProductForm" onSubmit={handleBarcodeSubmit}>
+                        <form
+                            className="createProductForm"
+                            onSubmit={handleBarcodeSubmit}
+                        >
                             <h3>Додати товар за штрих-кодом</h3>
                             <input
                                 type="text"
@@ -206,9 +272,15 @@ export default function Index({user, products}) {
                                 required
                             />
                             <div className="formActions">
-                                <button type="submit" className="saveBtn">Знайти</button>
-                                <button type="button" className="cancelBtn"
-                                        onClick={() => setShowBarcodeModal(false)}>Скасувати
+                                <button type="submit" className="saveBtn">
+                                    Знайти
+                                </button>
+                                <button
+                                    type="button"
+                                    className="cancelBtn"
+                                    onClick={() => setShowBarcodeModal(false)}
+                                >
+                                    Скасувати
                                 </button>
                             </div>
                         </form>
@@ -223,9 +295,15 @@ export default function Index({user, products}) {
                         <div className="footerSKin">SkinCare</div>
                     </div>
                     <div className="footerHide">
-                        <a href="#main" className="fMain">Головна</a>
-                        <a href="#tovary" className="fTovary">Товари</a>
-                        <a href="#aboutUs" className="fAbout">Про нас</a>
+                        <a href="#main" className="fMain">
+                            Головна
+                        </a>
+                        <a href="#tovary" className="fTovary">
+                            Товари
+                        </a>
+                        <a href="#aboutUs" className="fAbout">
+                            Про нас
+                        </a>
                         <a className="fQA">Q&A</a>
                     </div>
                     <div className="footerСonnection">
