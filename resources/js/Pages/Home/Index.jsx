@@ -85,7 +85,8 @@ export default function Index({ user, products }) {
                                 Про нас
                             </a>
                             <a className="QA">Q&A</a>
-
+                        </div>
+                        <div className="menuButtons">
                             <a className="myChois" href={"/my-care"}>
                                 Мій догляд
                             </a>
@@ -98,90 +99,86 @@ export default function Index({ user, products }) {
             </header>
 
             {/* <main className="main"> */}
-                <div
-                    className="headScreen"
-                    style={{ backgroundImage: `url(${background})` }}
-                >
-                    <div className="mainPhrace">
-                        <div className="firstPh">Скануй та слідкуй!</div>
-                        <div className="inscription">
-                            Допоможемо вам залишатися гарними та здоровими,
-                            дбаючи про терміни придатності вашої косметики. За
-                            допомогою SkinCare ви зможете легко відстежувати
-                            дати придатності кожного засобу, отримувати
-                            сповіщення про наближення строку та завжди мати під
-                            контролем свої косметичні засоби.
-                        </div>
-                    </div>
-                    <div className="mainButtons">
-                        <button
-                            className="firstBut"
-                            onClick={() => setShowBarcodeModal(true)}
-                        >
-                            Сканувати
-                        </button>
-                        <button
-                            className="firstBut"
-                            onClick={() => setShowModal(true)}
-                        >
-                            Ввести вручну
-                        </button>
+            <div
+                className="headScreen"
+                style={{ backgroundImage: `url(${background})` }}
+            >
+                <div className="mainPhrace">
+                    <div className="firstPh">Скануй та слідкуй!</div>
+                    <div className="inscription">
+                        Допоможемо вам залишатися гарними та здоровими, дбаючи
+                        про терміни придатності вашої косметики. За допомогою
+                        SkinCare ви зможете легко відстежувати дати придатності
+                        кожного засобу, отримувати сповіщення про наближення
+                        строку та завжди мати під контролем свої косметичні
+                        засоби.
                     </div>
                 </div>
+                <div className="mainButtons">
+                    <button
+                        className="firstBut"
+                        onClick={() => setShowBarcodeModal(true)}
+                    >
+                        Сканувати
+                    </button>
+                    <button
+                        className="firstBut"
+                        onClick={() => setShowModal(true)}
+                    >
+                        Ввести вручну
+                    </button>
+                </div>
+            </div>
 
-                <div className="mainYourTovar">
-                    <div className="phraceTovary" id="tovary">
-                        Ваші товари
-                    </div>
-                    <div className="tovaryCards">
-                        {userProducts.map((el) => (
-                            <div className="card">
-                                <img
-                                    src={el.image}
-                                    alt="photo"
-                                    className="productCard"
-                                />
-                                <div className="cardDescr">
-                                    <div className="nameTovar">{el.name}</div>
-                                    <div className="countryMade">
-                                        {el.country}
-                                    </div>
-                                    <div className="timeEnd">
-                                        Придатний до: {el.due_date}
-                                    </div>
-                                </div>
-                                <div className="cardDays">
-                                    <div className="howToTimeEndNum">
-                                        {el.open_days}
-                                    </div>
-                                    <div className="endDays">
-                                        днів залишилось
-                                    </div>
+            <div className="mainYourTovar">
+                <div className="phraceTovary" id="tovary">
+                    Ваші товари
+                </div>
+                <div className="tovaryCards">
+                    {userProducts.map((el) => (
+                        <div className="card">
+                            <img
+                                src={el.image}
+                                alt="photo"
+                                className="productCard"
+                            />
+                            <div className="cardDescr">
+                                <div className="nameTovar">{el.name}</div>
+                                <div className="countryMade">{el.country}</div>
+                                <div className="timeEnd">
+                                    Придатний до: {el.due_date}
                                 </div>
                             </div>
-                        ))}
-                    </div>
+                            <div className="cardDays">
+                                <div className="howToTimeEndNum">
+                                    {el.open_days}
+                                </div>
+                                <div className="endDays">днів залишилось</div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
+            </div>
 
-                <div className="mainAboutUs" id="aboutUs">
-                    <div className="phraceAbout">Про нас</div>
-                    <div className="includeAbout">
-                        <p>
-                            SkinCare — більше, ніж додаток. Це ваш помічник у
-                            догляді за красою, який дозволяє стежити за
-                            термінами придатності косметики легко і зручно.
-                        </p>
-                        <p>
-                            Ми — команда SkinCare — створили сервіс, щоб кожен
-                            користувач міг вчасно використовувати свої засоби та
-                            бути впевненим у їхній безпеці.
-                        </p>
-                        <p>
-                            Приєднуйтесь до нашої спільноти і керуйте красою з
-                            розумом.
-                        </p>
-                    </div>
+            <div className="mainAboutUs" id="aboutUs">
+                <div className="phraceAbout">Про нас</div>
+                <div className="includeAbout">
+                    <p>
+                        SkinCare — більше, ніж додаток. Це ваш помічник у
+                        догляді за красою, який дозволяє стежити за термінами
+                        придатності косметики легко і зручно.
+                    </p>
+                    <p>
+                        Ми — команда SkinCare — створили сервіс, щоб кожен
+                        користувач міг вчасно використовувати свої засоби та
+                        бути впевненим у їхній безпеці.
+                    </p>
+                    <p>
+                        Приєднуйтесь до нашої спільноти і керуйте красою з
+                        розумом.
+                    </p>
                 </div>
+            </div>
             {/* </main> */}
 
             {showModal && (
