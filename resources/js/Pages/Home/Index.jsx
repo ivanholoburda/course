@@ -97,7 +97,7 @@ export default function Index({ user, products }) {
                 </div>
             </header>
 
-            <main className="main">
+            {/* <main className="main"> */}
                 <div
                     className="headScreen"
                     style={{ backgroundImage: `url(${background})` }}
@@ -182,7 +182,7 @@ export default function Index({ user, products }) {
                         </p>
                     </div>
                 </div>
-            </main>
+            {/* </main> */}
 
             {showModal && (
                 <>
