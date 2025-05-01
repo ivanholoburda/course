@@ -181,7 +181,10 @@ html {
 
 .tovaryCards {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px 0;
 }
 
 .card {
@@ -189,17 +192,26 @@ html {
     flex-direction: row;
     align-items: center;
 
-    flex-basis: 300px;
-    flex-grow: 1;
-    min-width: 400px;
-    max-width: 600px;
-    gap: 20px;
-    margin: 37px 70px;
+    width: 600px;
+    height: 220px;
     background-color: rgba(178, 205, 186, 1);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .productCard {
     width: 150px;
+    height: 200px;
+    object-fit: contain;
+    background-color: white;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.nameTovar {
+    font-size: 15px;
+    color: rgba(71, 67, 67, 1);
 }
 
 .cardDescr {
@@ -222,8 +234,9 @@ html {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    max-width: 100px;
-    padding-left: 120px;
+    width: 120px;
+    padding: 10px;
+    font-size: 18px;
 }
 
 .howToTimeEndNum {
