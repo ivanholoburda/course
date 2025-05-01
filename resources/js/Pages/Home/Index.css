@@ -201,16 +201,17 @@ html {
 }
 
 .productCard {
-    width: 150px;
+    width: 200px;
     height: 200px;
-    object-fit: contain;
-    background-color: white;
-    padding: 10px;
+    object-fit: cover;      /* обрізає зображення, зберігаючи пропорції */
+    object-position: center;/* центр зображення в контейнері */
     flex-shrink: 0;
+    padding: 0;             /* padding не потрібен для <img> */
 }
 
+
 .nameTovar {
-    font-size: 15px;
+    font-size: 18px;
     color: rgba(71, 67, 67, 1);
 }
 
