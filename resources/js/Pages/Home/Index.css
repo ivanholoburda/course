@@ -55,9 +55,9 @@ html {
 .menuChoiser {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    padding: 0px 200px;
-    gap: 150px;
+    justify-content: space-between; /* або space-evenly для рівномірних відступів */
+    align-items: center;
+    padding: 0 100px; /* менше відступів */
 }
 
 .holovna,
@@ -96,6 +96,7 @@ html {
     padding: 15px 30px;
     border: none;
     font-size: 16px;
+    text-decoration: none;
 }
 
 .myChois:hover,
