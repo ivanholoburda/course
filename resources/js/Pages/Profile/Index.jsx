@@ -96,7 +96,7 @@ export default function Index({ user }) {
                             </a>
 
                             <a className="myChois" href={"/my-care"}>Мій догляд</a>
-                            <a className="account" href="/profile">Акаунт</a>
+                            <a className="accountProfile" href="/profile">Акаунт</a>
                         </div>
 
                     </div>
