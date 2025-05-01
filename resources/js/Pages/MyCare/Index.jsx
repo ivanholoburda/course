@@ -111,7 +111,7 @@ export default function Index({ products }) {
                             SkinCare
                         </div>
                         <div className="menuChoiser">
-                            <a className="holovna" href="./homePage.html">
+                            <a className="holovna" href="/home">
                                 Головна
                             </a>
                             <a className="tovary" href="#tovary">
@@ -121,8 +121,8 @@ export default function Index({ products }) {
                                 Про нас
                             </a>
 
-                            <a className="myChois">Мій догляд</a>
-                            <a className="account">Акаунт</a>
+                            <a className="myChois" href={"/my-care"}>Мій догляд</a>
+                            <a className="account" href="/profile">Акаунт</a>
                         </div>
                     </div>
                 </div>

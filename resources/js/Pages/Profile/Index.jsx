@@ -95,8 +95,8 @@ export default function Index({ user }) {
                                 Про нас
                             </a>
 
-                            <a className="myChois">Мій догляд</a>
-                            <a className="account">Акаунт</a>
+                            <a className="myChois" href={"/my-care"}>Мій догляд</a>
+                            <a className="account" href="/profile">Акаунт</a>
                         </div>
 
                     </div>
