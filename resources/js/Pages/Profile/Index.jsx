@@ -95,8 +95,8 @@ export default function Index({ user }) {
                                 Про нас
                             </a>
 
-                            <button className="myChois">Мій догляд</button>
-                            <button className="account">Акаунт</button>
+                            <a className="myChois">Мій догляд</a>
+                            <a className="account">Акаунт</a>
                         </div>
 
                     </div>

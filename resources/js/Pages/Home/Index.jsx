@@ -85,12 +85,12 @@ export default function Index({ user, products }) {
                                 Про нас
                             </a>
 
-                            <button className="myChois" href={"/my-care"}>
+                            <a className="myChois" href={"/my-care"}>
                                 Мій догляд
-                            </button>
-                            <button href="/profile" className="account">
+                            </a>
+                            <a href="/profile" className="account">
                                 Акаунт
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
