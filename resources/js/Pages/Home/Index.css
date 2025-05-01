@@ -57,7 +57,7 @@ html {
     flex-direction: row;
     justify-content: center;
     padding: 0px 200px;
-    gap: 90px;
+    gap: 100px;
 }
 
 .holovna,
@@ -83,10 +83,10 @@ html {
     cursor: pointer;
 }
 
-.menuButtons {
+/* .menuButtons {
     display: flex;
     gap: 40px;
-}
+} */
 
 .myChois,
 .account {
@@ -448,7 +448,8 @@ html {
     gap: 1rem;
 }
 
-.saveBtn, .cancelBtn {
+.saveBtn,
+.cancelBtn {
     padding: 10px 16px;
     border: none;
     border-radius: 8px;
