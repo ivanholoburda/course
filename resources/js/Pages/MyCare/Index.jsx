@@ -121,8 +121,12 @@ export default function Index({ products }) {
                                 Про нас
                             </a>
 
-                            <a className="myChoisMyCare" href={"/my-care"}>Мій догляд</a>
-                            <a className="account" href="/profile">Акаунт</a>
+                            <a className="myChoisMyCare" href={"/my-care"}>
+                                Мій догляд
+                            </a>
+                            <a className="account" href="/profile">
+                                Акаунт
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -154,6 +158,19 @@ export default function Index({ products }) {
 
                 <button type="submit" className="applyBtn">
                     Застосувати фільтри
+                </button>
+
+                <button
+                    type="button"
+                    className="resetBtn"
+                    onClick={() => {
+                        setSearchName("");
+                        setSearchDays("");
+                        setSortOrder(null);
+                        router.get("/my-care");
+                    }}
+                >
+                    Відмінити фільтрацію
                 </button>
             </form>
 
