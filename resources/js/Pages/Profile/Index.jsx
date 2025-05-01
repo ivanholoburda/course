@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import axios from "axios";
-import './Index.css';
-import { router } from '@inertiajs/react';
+import "./Index.css";
+import { router } from "@inertiajs/react";
 
 export default function Index({ user }) {
     const [editMode, setEditMode] = useState(false);
     const [form, setForm] = useState({
         name: user.data.name,
-        surname: user.data.surname || '',
+        surname: user.data.surname || "",
         email: user.data.email,
     });
 
     const [avatar, setAvatar] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState(user.data.avatar || '/default-avatar.jpg');
+    const [avatarUrl, setAvatarUrl] = useState(
+        user.data.avatar || "/default-avatar.jpg"
+    );
     const [errors, setErrors] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -21,7 +23,7 @@ export default function Index({ user }) {
     };
 
     const handleLogout = () => {
-        router.post('/logout');
+        router.post("/logout");
     };
 
     const handleSubmit = async (e) => {
@@ -30,7 +32,7 @@ export default function Index({ user }) {
         setErrors({});
 
         try {
-            await axios.put('/profile', form);
+            await axios.put("/profile", form);
             setEditMode(false);
         } catch (err) {
             if (err.response?.status === 422) {
@@ -58,18 +60,18 @@ export default function Index({ user }) {
         if (!avatar) return;
 
         const formData = new FormData();
-        formData.append('avatar', avatar);
+        formData.append("avatar", avatar);
 
         try {
-            await axios.post('/profile/upload-avatar', formData, {
-                headers: { 'Content-Type': 'multipart/form-data' },
+            await axios.post("/profile/upload-avatar", formData, {
+                headers: { "Content-Type": "multipart/form-data" },
             });
         } catch (err) {
             if (err.response?.status === 422) {
                 setErrors(err.response.data.errors || {});
             }
         } finally {
-            alert('Avatar uploaded successfully!');
+            alert("Avatar uploaded successfully!");
         }
     };
 
@@ -79,40 +81,66 @@ export default function Index({ user }) {
                 <div className="menu">
                     <div className="menuHide">
                         <i className="fa-solid fa-leaf leaf"></i>
-                        <div className="skinCare" id="main">SkinCare</div>
-                        <div className="menuChoiser">
-                            <a className="holovna" href="/home">Головна</a>
-                            <a className="tovary" href="#tovary">Ваші товари</a>
-                            <a className="aboutUs" href="#aboutUs">Про нас</a>
-                            <div className="QAHeader">Q&A</div>
+                        <div className="skinCare" id="main">
+                            SkinCare
                         </div>
-                        <div className="menuButtons">
+                        <div className="menuChoiser">
+                            <a className="holovna" href="/home">
+                                Головна
+                            </a>
+                            <a className="tovary" href="#tovary">
+                                Ваші товари
+                            </a>
+                            <a className="aboutUs" href="#aboutUs">
+                                Про нас
+                            </a>
+
                             <button className="myChois">Мій догляд</button>
                             <button className="account">Акаунт</button>
                         </div>
+
                     </div>
                 </div>
             </header>
 
             <main className="profileMain">
                 <div className="profileCard">
-                    <img src={avatarUrl} alt="User" className="profilePhoto"/>
+                    <img src={avatarUrl} alt="User" className="profilePhoto" />
 
                     <form onSubmit={uploadAvatar} className="avatarUploadForm">
-                        <input type="file" accept="image/*" onChange={handleAvatarChange}/>
-                        {errors.avatar && <div className="error">{errors.avatar[0]}</div>}
-                        <button type="submit" className="saveBtn">Завантажити аватар</button>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleAvatarChange}
+                        />
+                        {errors.avatar && (
+                            <div className="error">{errors.avatar[0]}</div>
+                        )}
+                        <button type="submit" className="saveBtn">
+                            Завантажити аватар
+                        </button>
                     </form>
 
                     {!editMode ? (
                         <div className="profileInfo">
-                            <h2>{form.name} {form.surname}</h2>
+                            <h2>
+                                {form.name} {form.surname}
+                            </h2>
                             <p>{form.email}</p>
                             <div className="profileActions">
-                                <button onClick={() => setEditMode(true)} className="editBtn">
-                                    <i className="fa-solid fa-gear settings"></i> Редагувати
+                                <button
+                                    onClick={() => setEditMode(true)}
+                                    className="editBtn"
+                                >
+                                    <i className="fa-solid fa-gear settings"></i>{" "}
+                                    Редагувати
                                 </button>
-                                <button onClick={handleLogout} className="logoutBtn">Log out</button>
+                                <button
+                                    onClick={handleLogout}
+                                    className="logoutBtn"
+                                >
+                                    Log out
+                                </button>
                             </div>
                         </div>
                     ) : (
@@ -124,7 +152,9 @@ export default function Index({ user }) {
                                 onChange={handleChange}
                                 placeholder="Ім'я"
                             />
-                            {errors.name && <div className="error">{errors.name[0]}</div>}
+                            {errors.name && (
+                                <div className="error">{errors.name[0]}</div>
+                            )}
                             <input
                                 type="text"
                                 name="surname"
@@ -132,7 +162,9 @@ export default function Index({ user }) {
                                 onChange={handleChange}
                                 placeholder="Прізвище"
                             />
-                            {errors.surname && <div className="error">{errors.surname[0]}</div>}
+                            {errors.surname && (
+                                <div className="error">{errors.surname[0]}</div>
+                            )}
                             <input
                                 type="email"
                                 name="email"
@@ -140,12 +172,24 @@ export default function Index({ user }) {
                                 onChange={handleChange}
                                 placeholder="Email"
                             />
-                            {errors.email && <div className="error">{errors.email[0]}</div>}
+                            {errors.email && (
+                                <div className="error">{errors.email[0]}</div>
+                            )}
                             <div className="formActions">
-                                <button type="submit" className="saveBtn" disabled={isSubmitting}>
-                                    {isSubmitting ? "Збереження..." : "Зберегти"}
+                                <button
+                                    type="submit"
+                                    className="saveBtn"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting
+                                        ? "Збереження..."
+                                        : "Зберегти"}
                                 </button>
-                                <button type="button" className="cancelBtn" onClick={() => setEditMode(false)}>
+                                <button
+                                    type="button"
+                                    className="cancelBtn"
+                                    onClick={() => setEditMode(false)}
+                                >
                                     Скасувати
                                 </button>
                             </div>
@@ -161,9 +205,15 @@ export default function Index({ user }) {
                         <div className="footerSKin">SkinCare</div>
                     </div>
                     <div className="footerHide">
-                        <a className="fMain" href="#main">Головна</a>
-                        <a className="fTovary" href="#tovary">Товари</a>
-                        <a className="fAbout" href="#aboutUs">Про нас</a>
+                        <a className="fMain" href="#main">
+                            Головна
+                        </a>
+                        <a className="fTovary" href="#tovary">
+                            Товари
+                        </a>
+                        <a className="fAbout" href="#aboutUs">
+                            Про нас
+                        </a>
                         <a className="fQA">Q&A</a>
                     </div>
                     <div className="footerСonnection">
