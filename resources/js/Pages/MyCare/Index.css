@@ -139,24 +139,25 @@ html {
 .footerInclude {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    padding: 37px 70px;
 }
 
 .footerLogo {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: row;
+  
+    gap: 5px;
 }
 
 .footerSKin {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .footerHide {
     display: flex;
+    flex-direction: row;
     justify-content: center;
     gap: 80px;
-    flex-wrap: wrap;
 }
 
 .fMain,
@@ -179,22 +180,28 @@ html {
 .footerСonnection {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    margin-top: 110px;
+    gap: 20px;
 }
 
-.footerPhone,
-.footerEmail {
+.footerPhone {
     display: flex;
-    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+  }
+  
+  .footerEmail {
+    display: flex;
+    flex-direction: row;
     gap: 8px;
-}
+  }
 
 .socialNet {
     display: flex;
+    flex-direction: row;
     justify-content: flex-end;
     align-items: center;
     gap: 25px;
-    margin-top: 20px;
 }
 
 .telegram,
