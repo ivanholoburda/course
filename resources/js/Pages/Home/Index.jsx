@@ -313,7 +313,6 @@ export default function Index({ user, products }) {
                         <a href="#aboutUs" className="fAbout">
                             Про нас
                         </a>
-                        <a className="fQA">Q&A</a>
                     </div>
                     <div className="footerСonnection">
                         <div className="footerPhone">

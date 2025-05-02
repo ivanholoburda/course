@@ -95,6 +95,7 @@ export default function Index({ user }) {
                                 Про нас
                             </a>
 
+
                             <a className="myChois" href={"/my-care"}>Мій догляд</a>
                             <a className="accountProfile" href="/profile">Акаунт</a>
                         </div>
@@ -214,7 +215,6 @@ export default function Index({ user }) {
                         <a className="fAbout" href="#aboutUs">
                             Про нас
                         </a>
-                        <a className="fQA">Q&A</a>
                     </div>
                     <div className="footerСonnection">
                         <div className="footerPhone">

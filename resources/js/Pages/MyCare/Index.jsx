@@ -121,6 +121,8 @@ export default function Index({ products }) {
                                 Про нас
                             </a>
 
+                      
+
                             <a className="myChoisMyCare" href={"/my-care"}>
                                 Мій догляд
                             </a>
@@ -236,7 +238,6 @@ export default function Index({ products }) {
                         <a className="fAbout" href="#aboutUs">
                             Про нас
                         </a>
-                        <a className="fQA">Q&A</a>
                     </div>
 
                     <div className="footerСonnection">
