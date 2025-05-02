@@ -138,8 +138,12 @@ html {
 
 .footerInclude {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
     padding: 37px 70px;
+    gap: 40px; /* для адаптивності */
 }
 
 .footerLogo {
