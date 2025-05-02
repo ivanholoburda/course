@@ -187,6 +187,7 @@ html {
     position: absolute;
     bottom: 40px;
     left: 70px;
+    top: 200px;
     display: flex;
     flex-direction: column;
     gap: 20px;

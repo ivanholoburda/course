@@ -203,12 +203,11 @@ html {
 .productCard {
     width: 200px;
     height: 200px;
-    object-fit: cover;      /* обрізає зображення, зберігаючи пропорції */
-    object-position: center;/* центр зображення в контейнері */
+    object-fit: cover; /* обрізає зображення, зберігаючи пропорції */
+    object-position: center; /* центр зображення в контейнері */
     flex-shrink: 0;
-    padding: 0;             /* padding не потрібен для <img> */
+    padding: 0; /* padding не потрібен для <img> */
 }
-
 
 .nameTovar {
     font-size: 18px;
@@ -297,7 +296,7 @@ html {
 
 .footerLogo {
     display: flex;
-  
+
     gap: 5px;
 }
 
@@ -321,7 +320,6 @@ html {
     text-decoration: none;
     color: white;
     border-bottom: 1px solid transparent;
-
 }
 
 .fMain:hover,
@@ -336,6 +334,7 @@ html {
     position: absolute;
     bottom: 40px;
     left: 70px;
+    top: 200px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -345,13 +344,13 @@ html {
     display: flex;
     flex-direction: row;
     gap: 5px;
-  }
-  
-  .footerEmail {
+}
+
+.footerEmail {
     display: flex;
     flex-direction: row;
     gap: 8px;
-  }
+}
 
 .socialNet {
     position: absolute;
