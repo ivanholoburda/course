@@ -279,10 +279,10 @@ html {
 }
 
 .footer {
-    background-color: rgba(78, 105, 94, 1);
+    background-color: #4e695e;
     color: white;
     margin-top: 80px;
-    height: 300px;
+    padding: 40px 70px;
 }
 
 .footerInclude {
