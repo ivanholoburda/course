@@ -149,7 +149,7 @@ html {
 .footerLogo {
     display: flex;
     flex-direction: row;
-
+  
     gap: 5px;
 }
 
@@ -186,7 +186,7 @@ html {
     display: flex;
     flex-direction: column;
     margin-top: 110px;
-    margin-right: 200px;
+    margin-left: -100px;
     gap: 20px;
 }
 
@@ -194,13 +194,13 @@ html {
     display: flex;
     flex-direction: row;
     gap: 5px;
-}
-
-.footerEmail {
+  }
+  
+  .footerEmail {
     display: flex;
     flex-direction: row;
     gap: 8px;
-}
+  }
 
 .socialNet {
     display: flex;
@@ -344,7 +344,7 @@ html {
 }
 
 .filters input,
-.filters select {
+.filters select  {
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
