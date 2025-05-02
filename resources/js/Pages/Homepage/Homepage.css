@@ -193,49 +193,49 @@ main {
 
 }
 
-.footer {
+.footerHome {
     background-color: rgba(78, 105, 94, 1);
     color: white;
     margin-top: 80px;
     height: 300px;
 }
 
-.footerInclude {
+.footerIncludeHome {
     display: flex;
     flex-direction: column;
     padding: 37px 70px;
 }
 
-.footerLogo {
+.footerLogoHome {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
 
-.footerSKin {
+.footerSKinHome {
     font-size: 20px;
 }
 
-.footerСonnection {
+.footerСonnectionHome {
     display: flex;
     flex-direction: column;
     margin-top: 110px;
     gap: 20px;
 }
 
-.footerPhone {
+.footerPhoneHome {
     display: flex;
     flex-direction: row;
     gap: 5px;
 }
 
-.footerEmail {
+.footerEmailHome {
     display: flex;
     flex-direction: row;
     gap: 8px;
 }
 
-.socialNet {
+.socialNetHome {
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
