@@ -134,6 +134,7 @@ html {
     color: white;
     margin-top: 80px;
     padding: 40px 70px;
+    height: 300px;
 }
 
 .footerInclude {
@@ -148,7 +149,7 @@ html {
 
 .footerLogo {
     display: flex;
-  
+
     gap: 5px;
 }
 
@@ -172,7 +173,6 @@ html {
     text-decoration: none;
     color: white;
     border-bottom: 1px solid transparent;
-
 }
 
 .fMain:hover,
@@ -187,7 +187,7 @@ html {
     position: absolute;
     bottom: 40px;
     left: 70px;
-    top: 200px;
+    top: 150px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -197,13 +197,13 @@ html {
     display: flex;
     flex-direction: row;
     gap: 5px;
-  }
-  
-  .footerEmail {
+}
+
+.footerEmail {
     display: flex;
     flex-direction: row;
     gap: 8px;
-  }
+}
 
 .socialNet {
     position: absolute;
@@ -348,7 +348,7 @@ html {
 }
 
 .filters input,
-.filters select  {
+.filters select {
     padding: 0.5rem 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
