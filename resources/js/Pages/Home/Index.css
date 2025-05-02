@@ -287,18 +287,17 @@ html {
 
 .footerInclude {
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: flex-start;
-    flex-wrap: wrap;
+    position: relative;
     padding: 37px 70px;
-    gap: 40px; /* для адаптивності */
+    gap: 40px;
 }
 
 .footerLogo {
     display: flex;
-    flex-direction: row;
-
+  
     gap: 5px;
 }
 
@@ -307,20 +306,21 @@ html {
 }
 
 .footerHide {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* gap: 40px; */
+    gap: 80px;
 }
 
 .fMain,
 .fTovary,
 .fAbout,
-.fQA  {
+.fQA {
     text-decoration: none;
     color: white;
     border-bottom: 1px solid transparent;
-    margin-left: 100px;
 
 }
 
@@ -333,10 +333,11 @@ html {
 }
 
 .footerСonnection {
+    position: absolute;
+    bottom: 40px;
+    left: 70px;
     display: flex;
     flex-direction: column;
-    margin-top: 110px;
-    margin-right: -100px;
     gap: 20px;
 }
 
@@ -344,20 +345,21 @@ html {
     display: flex;
     flex-direction: row;
     gap: 5px;
-}
-
-.footerEmail {
+  }
+  
+  .footerEmail {
     display: flex;
     flex-direction: row;
     gap: 8px;
-}
+  }
 
 .socialNet {
+    position: absolute;
+    bottom: 40px;
+    right: 70px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
     gap: 25px;
+    align-items: center;
 }
 
 .telegram,
