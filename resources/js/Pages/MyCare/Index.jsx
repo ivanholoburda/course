@@ -25,6 +25,7 @@ export default function Index({ products }) {
             country: product.country || "",
             due_date: product.due_date || "",
             open_days: product.open_days || "",
+            days_left: product.days_left, // додано!
             image: null,
         });
         setShowEditModal(true);
