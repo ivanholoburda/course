@@ -93,6 +93,7 @@ export default function Index({ products }) {
         if (confirm("Ви дійсно хочете видалити цей товар?")) {
             router.delete(`/products/${productId}`, {
                 onSuccess: () => {
+                    window.location.reload();
                     alert("Товар успішно видалено!");
                 },
                 onError: () => {
@@ -226,7 +227,7 @@ export default function Index({ products }) {
                             Головна
                         </a>
                         <a className="fTovary" href="#tovary">
-                            Товари
+                        Товари
                         </a>
                         <a className="fAbout" href="#aboutUs">
                             Про нас

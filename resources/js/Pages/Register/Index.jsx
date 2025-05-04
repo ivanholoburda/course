@@ -21,7 +21,7 @@ export default function Index() {
         <div className="container">
             <div className="image-container">
                 <img src={QAphoto} alt="cosmetics" className="signUpPhoto" />
-                <i className="fa-solid fa-arrow-left arrow"></i>
+                <a href={'/'}><i className="fa-solid fa-arrow-left arrow"></i></a>
             </div>
 
             <div className="registrForm">

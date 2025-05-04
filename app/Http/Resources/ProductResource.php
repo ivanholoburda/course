@@ -19,20 +19,6 @@ class ProductResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        $today = Carbon::today();
-
-        // Кінцева дата — через open_days після додавання (тобто сьогодні + open_days)
-        $expiryDate = $today->copy()->addDays($this->open_days);
-
-        // Якщо вказана загальна дата придатності, то беремо ту, що раніше
-        if ($this->due_date) {
-            $dueDate = Carbon::parse($this->due_date);
-            $expiryDate = $dueDate->lessThan($expiryDate) ? $dueDate : $expiryDate;
-        }
-
-        // Обчислюємо кількість днів до кінцевої дати
-        $daysLeft = $today->diffInDays($expiryDate, false);
-
         return [
             'id' => $this->id,
             'name' => $this->name,
@@ -42,7 +28,7 @@ class ProductResource extends JsonResource
             'image' => Str::startsWith($this->image, ['http://', 'https://', '/'])
                 ? $this->image
                 : Storage::url($this->image),
-            'days_left' => max($daysLeft, 0),
+            'days_left' => $this->days_left,
         ];
     }
 }

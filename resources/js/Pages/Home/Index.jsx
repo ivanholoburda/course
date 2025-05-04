@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import background from "@/assets/photo/backGHome.png";
 import "./Index.css";
 
-export default function Index({ user, products }) {
+export default function Index({user, products, expiredProducts}) {
     const [showModal, setShowModal] = useState(false);
     const [formData, setFormData] = useState({
         name: "",
@@ -14,6 +14,7 @@ export default function Index({ user, products }) {
     });
     const [userProducts, setProducts] = useState(products.data);
     const [showBarcodeModal, setShowBarcodeModal] = useState(false);
+    const [showExpiredModal, setShowExpiredModal] = useState(expiredProducts.data.length !== 0);
     const [barcode, setBarcode] = useState("");
 
     const handleBarcodeSubmit = async (e) => {
@@ -33,11 +34,11 @@ export default function Index({ user, products }) {
     };
 
     const handleChange = (e) => {
-        const { name, value, files } = e.target;
+        const {name, value, files} = e.target;
         if (name === "image") {
-            setFormData({ ...formData, image: files[0] });
+            setFormData({...formData, image: files[0]});
         } else {
-            setFormData({ ...formData, [name]: value });
+            setFormData({...formData, [name]: value});
         }
     };
 
@@ -99,7 +100,7 @@ export default function Index({ user, products }) {
             {/* <main className="main"> */}
             <div
                 className="headScreen"
-                style={{ backgroundImage: `url(${background})` }}
+                style={{backgroundImage: `url(${background})`}}
             >
                 <div className="mainPhrace">
                     <div className="firstPh">Скануй та слідкуй!</div>
@@ -296,6 +297,26 @@ export default function Index({ user, products }) {
                     </div>
                 </>
             )}
+
+            {showExpiredModal &&
+                <>
+                    <div
+                        className="modal-overlay"
+                        onClick={() => setShowBarcodeModal(false)}
+                    ></div>
+                    <div className="modalCreate">
+                        <h3>У наступних товарів закінчився термін:</h3>
+                        <ul>
+                            { expiredProducts.data.map(el => <li key={el.id}>{el.product.name}</li>) }
+                        </ul>
+                        <div className="formActions">
+                            <button onClick={() => setShowExpiredModal(false)} className="saveBtn">
+                                Ок
+                            </button>
+                        </div>
+                    </div>
+                </>
+            }
 
             <footer className="footer">
                 <div className="footerInclude">

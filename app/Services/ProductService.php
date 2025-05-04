@@ -5,9 +5,11 @@ namespace App\Services;
 use App\Models\Product;
 use App\Models\User;
 use App\Pipeline\SearchByNamePipeline;
-use App\Pipeline\SearchByOpenDaysPipeline;
+use App\Pipeline\SearchByDaysLeftPipeline;
 use App\Pipeline\SortByCreatedAtPipeline;
+use App\Repository\ExpiredProductRepository;
 use App\Repository\ProductRepository;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Routing\Pipeline;
@@ -16,6 +18,7 @@ class ProductService
 {
     public function __construct(
         private readonly ProductRepository $productRepository,
+        private readonly ExpiredProductRepository $expiredProductRepository,
         private readonly OpenBeautyClient  $client,
     )
     {
@@ -30,10 +33,22 @@ class ProductService
 
         $path = $file->store('products', 'public');
 
+        $today = Carbon::today();
+
+        $expiryDate = $today->copy()->addDays((int) $data['open_days']);
+
+        if (isset($data['due_date'])) {
+            $dueDate = Carbon::parse($data['due_date']);
+            $expiryDate = $dueDate->lessThan($expiryDate) ? $dueDate : $expiryDate;
+        }
+
+        $daysLeft = $today->diffInDays($expiryDate);
+
         /** @var Product|null */
         return $this->productRepository->create($data + [
                 'image' => $path,
                 'user_id' => $user->id,
+                'days_left' => $daysLeft,
             ]);
     }
 
@@ -66,6 +81,19 @@ class ProductService
             ->get();
     }
 
+    public function getExpiredProducts(User $user): Collection
+    {
+        $result = $this->expiredProductRepository->getUserExpiredProducts($user);
+        $this->cleanupExpiredProducts($user);
+
+        return $result;
+    }
+
+    public function cleanupExpiredProducts(User $user): bool
+    {
+        return $this->expiredProductRepository->deleteUserExpiredProducts($user);
+    }
+
     /**
      * @throws \Exception
      */
@@ -92,7 +120,7 @@ class ProductService
             ->send($query)
             ->through([
                 SearchByNamePipeline::class,
-                SearchByOpenDaysPipeline::class,
+                SearchByDaysLeftPipeline::class,
                 SortByCreatedAtPipeline::class
             ])
             ->thenReturn();

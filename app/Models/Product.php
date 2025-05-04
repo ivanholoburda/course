@@ -12,6 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string $due_date
  * @property int $open_days
  * @property string $image
+ * @property int $days_left
  */
 class Product extends Model
 {
@@ -22,6 +23,7 @@ class Product extends Model
         'open_days',
         'image',
         'user_id',
+        'days_left',
     ];
 
     public function user(): BelongsTo

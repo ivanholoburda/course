@@ -26,7 +26,7 @@ class CreateProductRequest extends FormRequest
             'country' => ['required', 'string'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
             'due_date' => ['required', 'date'],
-            'open_days' => ['required', 'integer', 'min:1'],
+            'open_days' => ['required', 'numeric', 'min:1'],
         ];
     }
 }

@@ -91,6 +91,7 @@ html {
     border-radius: 10px;
     gap: 20px;
     max-width: 800px;
+    height: auto;
 }
 
 .productCard {
