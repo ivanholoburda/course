@@ -149,7 +149,7 @@ export default function Index({ user, products }) {
                             </div>
                             <div className="cardDays">
                                 <div className="howToTimeEndNum">
-                                    {el.open_days}
+                                    {el.days_left}
                                 </div>
                                 <div className="endDays">днів залишилось</div>
                             </div>
