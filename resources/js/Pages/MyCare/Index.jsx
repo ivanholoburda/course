@@ -121,8 +121,6 @@ export default function Index({ products }) {
                                 Про нас
                             </a>
 
-                      
-
                             <a className="myChoisMyCare" href={"/my-care"}>
                                 Мій догляд
                             </a>
@@ -196,7 +194,7 @@ export default function Index({ products }) {
                             </div>
                             <div className="cardDays">
                                 <div className="howToTimeEndNum">
-                                    {el.open_days}
+                                    {el.days_left}
                                 </div>
                                 <div className="endDays">днів залишилось</div>
                             </div>
