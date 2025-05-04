@@ -4,18 +4,21 @@ namespace App\Pipeline;
 
 use Closure;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 
-class SearchByOpenDaysPipeline
+class SearchByDaysLeftPipeline
 {
     public function handle(Builder $builder, Closure $next): Builder
     {
-        if (!request()->filled('open_days')) {
+        if (!request()->filled('days_left')) {
             return $next($builder);
         }
 
+        $daysLeft = (int) request()->input('days_left');
+
+        // Фільтруємо по розрахованому значенню
         return $next(
-            $builder
-                ->where('open_days', request()->input('open_days'))
+            $builder->whereRaw('DATEDIFF(due_date, CURDATE()) = ?', [$daysLeft])
         );
     }
 }
