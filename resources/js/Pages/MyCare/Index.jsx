@@ -15,7 +15,6 @@ export default function Index({ products }) {
         country: "",
         due_date: "",
         open_days: "",
-        days_left: "",
         image: null,
     });
 
@@ -26,7 +25,6 @@ export default function Index({ products }) {
             country: product.country || "",
             due_date: product.due_date || "",
             open_days: product.open_days || "",
-            days_left: product.days_left, // додано!
             image: null,
         });
         setShowEditModal(true);
@@ -49,7 +47,6 @@ export default function Index({ products }) {
         if (editForm.country) data.append("country", editForm.country);
         if (editForm.due_date) data.append("due_date", editForm.due_date);
         if (editForm.open_days) data.append("open_days", editForm.open_days);
-        if (editForm.days_left) data.append("days_left", editForm.days_left);
         if (editForm.image) data.append("image", editForm.image);
 
         try {
@@ -63,7 +60,6 @@ export default function Index({ products }) {
                 }
             );
 
-            console.log("Товар оновлено:", response.data);
             alert("Товар успішно оновлено!");
             setShowEditModal(false);
             setProducts(
@@ -84,8 +80,11 @@ export default function Index({ products }) {
 
         const query = {};
         if (searchName) query.name = searchName;
-        if (searchDays) query.open_days = searchDays;
-        if (sortOrder) query.direction = sortOrder;
+        if (searchDays) query.days_left = searchDays;
+        if (sortOrder) {
+            query.sort_by = "days_left";
+            query.direction = sortOrder;
+        }
 
         router.get("/my-care", query);
     };
@@ -109,7 +108,6 @@ export default function Index({ products }) {
                 <div className="menu">
                     <div className="menuHide">
                         <i className="fa-solid fa-leaf leaf"></i>
-
                         <div className="skinCare" id="main">
                             SkinCare
                         </div>
@@ -123,7 +121,6 @@ export default function Index({ products }) {
                             <a className="aboutUs" href="#aboutUs">
                                 Про нас
                             </a>
-
                             <a className="myChoisMyCare" href={"/my-care"}>
                                 Мій догляд
                             </a>
@@ -142,14 +139,12 @@ export default function Index({ products }) {
                     value={searchName}
                     onChange={(e) => setSearchName(e.target.value)}
                 />
-
                 <input
                     type="number"
-                    placeholder="Пошук по днях"
+                    placeholder="Пошук по залишку днів"
                     value={searchDays}
                     onChange={(e) => setSearchDays(e.target.value)}
                 />
-
                 <select
                     value={sortOrder || ""}
                     onChange={(e) => setSortOrder(e.target.value || null)}
@@ -158,11 +153,9 @@ export default function Index({ products }) {
                     <option value="asc">Сортувати ↑ (за зростанням)</option>
                     <option value="desc">Сортувати ↓ (за спаданням)</option>
                 </select>
-
                 <button type="submit" className="applyBtn">
                     Застосувати фільтри
                 </button>
-
                 <button
                     type="button"
                     className="resetBtn"
@@ -228,7 +221,6 @@ export default function Index({ products }) {
                         <i className="fa-solid fa-leaf leaf2"></i>
                         <div className="footerSKin">SkinCare</div>
                     </div>
-
                     <div className="footerHide">
                         <a className="fMain" href="#main">
                             Головна
@@ -240,19 +232,16 @@ export default function Index({ products }) {
                             Про нас
                         </a>
                     </div>
-
                     <div className="footerСonnection">
                         <div className="footerPhone">
                             <i className="fa-regular fa-phone"></i>
                             <div className="phone">+380xxxxxxxxx</div>
                         </div>
-
                         <div className="footerEmail">
                             <i className="fa-regular fa-envelope"></i>
                             <div className="email">skinscancare@gmail.com</div>
                         </div>
                     </div>
-
                     <div className="socialNet">
                         <i className="fa-brands fa-telegram telegram"></i>
                         <i className="fa-brands fa-instagram instagram"></i>
@@ -260,6 +249,7 @@ export default function Index({ products }) {
                     </div>
                 </div>
             </footer>
+
             {showEditModal && (
                 <>
                     <div
