@@ -199,22 +199,18 @@ export default function Index({ products }) {
                                 <div className="endDays">днів залишилось</div>
                             </div>
                             <div className="cardActions">
-                                {el.can_edit && (
-                                    <button
-                                        className="editBtn"
-                                        onClick={() => openEditModal(el)}
-                                    >
-                                        ✏️ Редагувати
-                                    </button>
-                                )}
-                                {el.can_delete && (
-                                    <button
-                                        className="deleteBtn"
-                                        onClick={() => handleDelete(el.id)}
-                                    >
-                                        🗑️ Видалити
-                                    </button>
-                                )}
+                                <button
+                                    className="editBtn"
+                                    onClick={() => openEditModal(el)}
+                                >
+                                    ✏️ Редагувати
+                                </button>
+                                <button
+                                    className="deleteBtn"
+                                    onClick={() => handleDelete(el.id)}
+                                >
+                                    🗑️ Видалити
+                                </button>
                             </div>
                         </div>
                     ))
