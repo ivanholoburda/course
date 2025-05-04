@@ -15,6 +15,7 @@ export default function Index({ products }) {
         country: "",
         due_date: "",
         open_days: "",
+        days_left: "",
         image: null,
     });
 
@@ -48,6 +49,7 @@ export default function Index({ products }) {
         if (editForm.country) data.append("country", editForm.country);
         if (editForm.due_date) data.append("due_date", editForm.due_date);
         if (editForm.open_days) data.append("open_days", editForm.open_days);
+        if (editForm.days_left) data.append("days_left", editForm.days_left);
         if (editForm.image) data.append("image", editForm.image);
 
         try {
