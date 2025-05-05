@@ -61,7 +61,6 @@ body {
     gap: 30px;
 }
 
-/* Поля вводу: однакові стилі для всіх типів */
 .inputRegist input[type="text"],
 .inputRegist input[type="email"],
 .inputRegist input[type="password"] {
@@ -74,7 +73,26 @@ body {
     width: 100%;
 }
 
-/* Кнопка */
+#email {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    padding: 10px 0;
+    width: 100%;
+}
+
+#password {
+    outline: none;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid black;
+    font-size: 18px;
+    padding: 10px 0;
+    width: 100%;
+}
+
 #signUpBtn {
     border: none;
     background-color: rgba(78, 105, 94, 1);
@@ -87,7 +105,6 @@ body {
     cursor: pointer;
 }
 
-/* Повідомлення про помилки */
 .error {
     color: red;
     font-size: 14px;
