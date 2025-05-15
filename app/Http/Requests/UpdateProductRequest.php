@@ -27,7 +27,7 @@ class UpdateProductRequest extends FormRequest
             'country' => ['nullable', 'string'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg'],
             'due_date' => ['nullable', 'date'],
-            'open_days' => ['nullable', 'integer', 'min:1'],
+            'open_days' => ['nullable', 'numeric', 'min:1'],
         ];
     }
 }

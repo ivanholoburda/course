@@ -23,7 +23,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'name' => $this->name,
             'country' => $this->country,
-            'due_date' => $this->due_date,
+            'due_date' => $this->due_date->format('d.m.Y'),
             'open_days' => $this->open_days,
             'image' => Str::startsWith($this->image, ['http://', 'https://', '/'])
                 ? $this->image

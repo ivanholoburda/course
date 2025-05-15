@@ -20,8 +20,8 @@ class ProductService
         private readonly ProductRepository $productRepository,
         private readonly ExpiredProductRepository $expiredProductRepository,
         private readonly OpenBeautyClient  $client,
-    )
-    {
+        private readonly ProductDateService $productDateService,
+    ) {
     }
 
     /**
@@ -32,17 +32,7 @@ class ProductService
         unset($data['image']);
 
         $path = $file->store('products', 'public');
-
-        $today = Carbon::today();
-
-        $expiryDate = $today->copy()->addDays((int) $data['open_days']);
-
-        if (isset($data['due_date'])) {
-            $dueDate = Carbon::parse($data['due_date']);
-            $expiryDate = $dueDate->lessThan($expiryDate) ? $dueDate : $expiryDate;
-        }
-
-        $daysLeft = $today->diffInDays($expiryDate);
+        $daysLeft = $this->productDateService->calculateDaysLeft((int) $data['open_days'], Carbon::parse($data['due_date']));
 
         /** @var Product|null */
         return $this->productRepository->create($data + [
@@ -66,6 +56,11 @@ class ProductService
             $path = $file->store('products', 'public');
             $additionalFields['image'] = $path;
         }
+
+        $data['days_left'] = $this->productDateService->calculateDaysLeft(
+            isset($data['open_days']) ? (int) $data['open_days'] : $product->open_days,
+            isset($data['due_date']) ? Carbon::parse($data['due_date']) : $product->due_date,
+        );
 
         /** @var Product|null */
         return $this->productRepository->update($product, $data + $additionalFields);
