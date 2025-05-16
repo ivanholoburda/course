@@ -174,7 +174,9 @@ export default function Index({ products }) {
             <div className="tovaryCards">
                 {userProducts.length > 0 ? (
                     userProducts.map((el) => (
-                        <div className="card" key={el.id}>
+                        <div
+                            className={`card ${el.days_left === 0 ? 'expired' : ''}`}
+                        >
                             <img
                                 src={el.image}
                                 alt="photo"
