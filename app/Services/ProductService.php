@@ -78,15 +78,7 @@ class ProductService
 
     public function getExpiredProducts(User $user): Collection
     {
-        $result = $this->expiredProductRepository->getUserExpiredProducts($user);
-        $this->cleanupExpiredProducts($user);
-
-        return $result;
-    }
-
-    public function cleanupExpiredProducts(User $user): bool
-    {
-        return $this->expiredProductRepository->deleteUserExpiredProducts($user);
+        return $this->expiredProductRepository->getUserExpiredProducts($user);
     }
 
     /**

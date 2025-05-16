@@ -500,3 +500,7 @@ html {
 .cancelBtn:hover {
     background-color: #d32f2f;
 }
+
+.expired {
+    border: 2px solid red;
+}
